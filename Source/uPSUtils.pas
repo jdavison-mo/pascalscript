@@ -722,7 +722,7 @@ end;
 
 function StrToFloat(const s: TbtString): Extended;
 var
-  i: longint;
+  i: Integer;
 begin
   Val(string(s), Result, i);
   if i <> 0 then raise Exception.Create(RPS_InvalidFloat);

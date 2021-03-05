@@ -23,7 +23,7 @@ type
   
   TPSLineInfo = class(TObject)
   private
-    function GetLineOffset(I: Integer): Cardinal;
+    function GetLineOffset(I: LongInt): Cardinal;
     function GetLineOffsetCount: Longint;
   protected
     FEndPos: Cardinal;
@@ -62,7 +62,7 @@ type
     FItems: TIfList;
     FCurrent: Longint;
     function GetCount: Longint;
-    function GetItem(I: Integer): TPSLineInfo;
+    function GetItem(I: LongInt): TPSLineInfo;
   protected
 
     function Add: TPSLineInfo;
@@ -179,7 +179,7 @@ type
   private
     FItems: TIfList;
     function GetCount: Longint;
-    function GetItem(I: Integer): TPSDefineState;
+    function GetItem(I: LongInt): TPSDefineState;
     function GetWrite: Boolean;
     function GetPrevWrite: Boolean; //JeromeWelsh - nesting fix
   public
@@ -255,7 +255,7 @@ begin
   Result := FItems.Count;
 end;
 
-function TPSLineInfoList.GetItem(I: Integer): TPSLineInfo;
+function TPSLineInfoList.GetItem(I: LongInt): TPSLineInfo;
 begin
   Result := TPSLineInfo(FItems[i]);
 end;
@@ -314,7 +314,7 @@ begin
 end;
 
 
-function TPSLineInfo.GetLineOffset(I: Integer): Cardinal;
+function TPSLineInfo.GetLineOffset(I: LongInt): Cardinal;
 begin
   Result := Longint(FLineOffsets[I]);
 end;
@@ -757,7 +757,7 @@ begin
   FItems := TIfList.Create;
 end;
 
-procedure TPSDefineStates.Delete(I: Integer);
+procedure TPSDefineStates.Delete(I: LongInt);
 begin
   TPSDefineState(FItems[i]).Free;
   FItems.Delete(i);
@@ -778,7 +778,7 @@ begin
   Result := FItems.Count;
 end;
 
-function TPSDefineStates.GetItem(I: Integer): TPSDefineState;
+function TPSDefineStates.GetItem(I: LongInt): TPSDefineState;
 begin
   Result := FItems[i];
 end;
@@ -798,4 +798,4 @@ begin
   else Result := TPSDefineState(FItems[FItems.Count -2]).DoWrite;
 end;
 
-end.
+end.

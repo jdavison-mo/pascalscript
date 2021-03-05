@@ -130,7 +130,7 @@ type
     FOnFindUnknownFile: TPSOnNeedFile;
     function GetRunning: Boolean;
     procedure SetScript(const Value: TStrings);
-    function GetCompMsg(i: Integer): TPSPascalCompilerMessage;
+    function GetCompMsg(i: LongInt): TPSPascalCompilerMessage;
     function GetCompMsgCount: Longint;
     function GetAbout: tbtstring;
     function ScriptUses(Sender: TPSPascalCompiler; const Name: tbtstring): Boolean;
@@ -327,7 +327,7 @@ type
     FOnLineInfo: TPSOnLineInfo;
     FLastRow: Cardinal;
     FOnBreakpoint: TPSOnLineInfo;
-    function GetBreakPoint(I: Integer): TPSBreakPointInfo;
+    function GetBreakPoint(I: LongInt): TPSBreakPointInfo;
     function GetBreakPointCount: Longint;
   protected
     procedure SetMainFileName(const Value: tbtstring); override;
@@ -625,7 +625,7 @@ begin
   end;
 end;
 
-function TPSScript.CompilerErrorToStr(I: Integer): tbtstring;
+function TPSScript.CompilerErrorToStr(I: LongInt): tbtstring;
 begin
   Result := CompilerMessages[i].MessageToString;
 end;
@@ -694,7 +694,7 @@ begin
     raise Exception.Create(RPS_ScriptNotCompiled);
 end;
 
-function TPSScript.GetCompMsg(i: Integer): TPSPascalCompilerMessage;
+function TPSScript.GetCompMsg(i: LongInt): TPSPascalCompilerMessage;
 begin
   Result := FComp.Msg[i];
 end;
@@ -1211,7 +1211,7 @@ begin
     dc.Exec.Run;
 end;
 
-procedure TPSScriptDebugger.ClearBreakPoint(const Fn: tbtstring; Line: Integer);
+procedure TPSScriptDebugger.ClearBreakPoint(const Fn: tbtstring; Line: LongInt);
 var
   h, i: Longint;
   bi: TPSBreakPointInfo;
@@ -1258,7 +1258,7 @@ begin
   inherited Destroy;
 end;
 
-function TPSScriptDebugger.GetBreakPoint(I: Integer): TPSBreakPointInfo;
+function TPSScriptDebugger.GetBreakPoint(I: LongInt): TPSBreakPointInfo;
 begin
   Result := FBreakPoints[i];
 end;
@@ -1372,7 +1372,7 @@ begin
     Result := NewTPSVariantIFC(pv, False).Dta;
 end;
 
-function TPSScriptDebugger.HasBreakPoint(const Fn: tbtstring; Line: Integer): Boolean;
+function TPSScriptDebugger.HasBreakPoint(const Fn: tbtstring; Line: LongInt): Boolean;
 var
   h, i: Longint;
   bi: TPSBreakPointInfo;
@@ -1406,7 +1406,7 @@ begin
     raise Exception.Create(RPS_NotRunning);
 end;
 
-procedure TPSScriptDebugger.SetBreakPoint(const fn: tbtstring; Line: Integer);
+procedure TPSScriptDebugger.SetBreakPoint(const fn: tbtstring; Line: LongInt);
 var
   i, h: Longint;
   BI: TPSBreakPointInfo;

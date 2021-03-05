@@ -12383,7 +12383,7 @@ begin
 end;
 
 {$IFNDEF PS_NOWIDESTRING}
-function TPSStack.GetUnicodeString(ItemNo: Integer): tbtunicodestring;
+function TPSStack.GetUnicodeString(ItemNo: Longint): tbtunicodestring;
 var
   val: PPSVariant;
 begin
@@ -12618,7 +12618,7 @@ end;
 
 
 {$IFNDEF PS_NOWIDESTRING}
-procedure TPSStack.SetUnicodeString(ItemNo: Integer;
+procedure TPSStack.SetUnicodeString(ItemNo: LongInt;
   const Data: tbtunicodestring);
 var
   val: PPSVariant;
