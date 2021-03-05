@@ -44,10 +44,12 @@ uses
   uPSC_controls,
   uPSC_classes,
   uPSR_graphics,
-  uPSR_controls,
-  uPSR_classes,
+  {$IFDEF MSWINDOWS}
   uPSC_comobj,
-  uPSR_comobj;
+  uPSR_comobj,
+  {$ENDIF}
+  uPSR_controls,
+  uPSR_classes;
 
 {$R *.DFM}
 
@@ -60,7 +62,9 @@ begin
   SIRegister_Controls(x);
   SIRegister_stdctrls(x);
   SIRegister_Forms(x);
+  {$IFDEF MSWINDOWS}
     SIRegister_ComObj(x);
+  {$ENDIF}
 end;
 
 procedure TForm1.IFPS3ClassesPlugin1ExecImport(Sender: TObject; Exec: TIFPSExec;
@@ -72,7 +76,9 @@ begin
   RIRegister_Controls(x);
   RIRegister_stdctrls(x);
   RIRegister_Forms(x);
+  {$IFDEF MSWINDOWS}
     RIRegister_ComObj(exec);
+  {$ENDIF}
 end;
 
 function ImportTest(S1: string; s2: Longint; s3: Byte; s4: word; var s5: string): string;

@@ -200,7 +200,9 @@ begin
     RegisterMethod(@TBitmap.LoadFromClipboardFormat, 'LoadFromClipboardFormat');
 {$ENDIF}
     RegisterMethod(@TBitmap.LoadFromResourceName, 'LoadFromResourceName');
+{$IFDEF MSWINDOWS}
     RegisterMethod(@TBitmap.LoadFromResourceID, 'LoadFromResourceID');
+{$ENDIF}
 {$IFNDEF CLX}
     RegisterMethod(@TBitmap.ReleaseHandle, 'ReleaseHandle');
     RegisterMethod(@TBitmap.ReleasePalette, 'ReleasePalette');
