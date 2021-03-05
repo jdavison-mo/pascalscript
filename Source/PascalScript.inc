@@ -61,6 +61,10 @@ Defines:
 {$DEFINE PS_NOIDISPATCH} // not implemented
 {$ENDIF}
 
+{$IFNDEF MSWINDOWS}
+{$DEFINE PS_NOIDISPATCH}
+{$ENDIF}
+
 {$IFDEF FPC}
   {$I PascalScriptFPC.inc}
 {$ENDIF}
