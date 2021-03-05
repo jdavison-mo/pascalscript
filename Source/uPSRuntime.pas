@@ -11634,6 +11634,10 @@ begin
   s := '';
 end;
 
+{$IFNDEF ASSEMBLER}
+{$DEFINE empty_methods_handler}
+{$ENDIF}
+
 {$ifdef CPUX64}
 
 {.$DEFINE empty_methods_handler}
