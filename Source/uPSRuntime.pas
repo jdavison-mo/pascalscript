@@ -11655,6 +11655,11 @@ end;
 function MyAllMethodsHandler2(Self: PScriptMethodInfo; const Stack: PPointer; _EDX, _ECX: Pointer): Integer; forward;
 
 procedure MyAllMethodsHandler;
+{$IFNDEF ASSEMBER}
+begin
+  {$MESSAGE ERROR 'TODO: Implement MyAllMethodsHandler with pascal'}
+end;
+{$ELSE}
 {$ifdef CPUX64}
 //  On entry:
 //  RCX = Self pointer
@@ -11690,6 +11695,7 @@ asm
   mov eax, ecx
 end;
 {$endif}
+{$endif ASSEMBLER}
 
 function ResultAsRegister(b: TPSTypeRec): Boolean;
 begin
@@ -11767,11 +11773,18 @@ end;
 
 
 procedure PutOnFPUStackExtended(ft: extended);
+{$IFDEF ASSEMBLER}
 asm
 //  fstp tbyte ptr [ft]
   fld tbyte ptr [ft]
 
 end;
+{$ELSE}
+begin
+  {$MESSAGE ERROR 'TODO: Implement PutOnFPUStackExtended with pascal'}
+end;
+{$ENDIF}
+
 
 
 function MyAllMethodsHandler2(Self: PScriptMethodInfo; const Stack: PPointer; _EDX, _ECX: Pointer): Integer;
