@@ -11659,7 +11659,7 @@ end;
 function MyAllMethodsHandler2(Self: PScriptMethodInfo; const Stack: PPointer; _EDX, _ECX: Pointer): Integer; forward;
 
 procedure MyAllMethodsHandler;
-{$IFNDEF ASSEMBER}
+{$IFNDEF ASSEMBLER}
 begin
   {$MESSAGE ERROR 'TODO: Implement MyAllMethodsHandler with pascal'}
 end;
